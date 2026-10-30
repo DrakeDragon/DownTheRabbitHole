@@ -177,6 +177,10 @@ h2{color:#f2dfb6;font-size:29px}.sub{font-size:12px;font-style:normal;letter-spa
 #title-portrait{width:100%;height:200px;flex-shrink:0}#t-sel{padding-top:0!important;margin-top:0!important}@container(max-width:390px){#title-portrait{height:175px}}
 .motion-choice{display:flex;align-items:center;justify-content:center;gap:12px;font:12px system-ui;color:#d9c18e}.motion-choice select{appearance:auto;background:#102331;color:#f2e6cc;border:1px solid #b89e685c;border-radius:7px;min-height:46px;padding:8px 28px 8px 12px;font:14px system-ui;touch-action:manipulation}#modalbox{scrollbar-width:thin}.motion-choice select:focus-visible{outline:2px solid #e9d2a1;outline-offset:2px}
 
+
+/* The title scene remains readable while its illustrated shaft moves behind it. */
+#s-title{background:linear-gradient(180deg,#050d18a0,transparent 25%,transparent 43%,#08121de8 67%,#08121d 100%)}#s-title h1{text-shadow:0 3px 8px #000,0 0 32px #000b}#s-title .sub{color:#d5d8c6;text-shadow:0 2px 7px #000}#title-portrait{height:220px;position:relative}#title-portrait:after{content:'A LITTLE CURIOSITY. A VERY LONG WAY DOWN.';position:absolute;bottom:8px;left:0;right:0;font:8px system-ui;letter-spacing:.16em;color:#c8baa0;text-shadow:0 1px 8px #000}#t-sel .chip{background:linear-gradient(150deg,#172938f5,#0a1420fa)}#s-title .btn.big{box-shadow:0 8px 28px #0009,inset 0 1px #fff8} @container(max-width:390px){#title-portrait{height:190px}#title-portrait:after{font-size:7px;letter-spacing:.11em}}
+
 </style>
 </head>
 <body>
@@ -3612,6 +3616,39 @@ var beforeMotionRender=render;render=function(){var wasGallery=galleryOpen;galle
 var isolatedMotionFrames={};
 function isolatedMotionFrame(key,row,frame,im,f){var id=key+':'+row+':'+frame;if(isolatedMotionFrames[id])return isolatedMotionFrames[id];var cv=document.createElement('canvas');cv.width=f.w;cv.height=f.h;var c=cv.getContext('2d',{willReadFrequently:true});c.drawImage(im,f.x,f.y,f.w,f.h,0,0,f.w,f.h);var d=c.getImageData(0,0,f.w,f.h),a=d.data,w=f.w,h=f.h,seen=new Uint8Array(w*h),best=[];for(var q=0;q<w*h;q++){if(seen[q]||a[q*4+3]<8)continue;var queue=[q];seen[q]=1;for(var head=0;head<queue.length;head++){var z=queue[head],ns=[z-w,z+w];if(z%w)ns.push(z-1);if(z%w<w-1)ns.push(z+1);for(var j=0;j<ns.length;j++){var n=ns[j];if(n>=0&&n<w*h&&!seen[n]&&a[n*4+3]>=8){seen[n]=1;queue.push(n);}}}if(queue.length>best.length)best=queue;}var keep=new Uint8Array(w*h);best.forEach(function(z){keep[z]=1;});for(var n=0;n<w*h;n++)if(!keep[n])a[n*4+3]=0;c.putImageData(d,0,0);isolatedMotionFrames[id]=cv;return cv;}
 window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',function(e){reducedMotion=e.matches;motionCache={};});
+
+/* Cinematic title: continuous fall, stable character pose and independent scenery. */
+var titleFallClock=0,titleFallLast=0;
+function titleRabbitHole(c,t){
+ var g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,'#091725');g.addColorStop(.5,'#192b38');g.addColorStop(1,'#080f1b');c.fillStyle=g;c.fillRect(0,0,W,H);
+ var halo=c.createRadialGradient(W*.52,H*.38,8,W*.5,H*.45,W*.65);halo.addColorStop(0,'#84b9bd2a');halo.addColorStop(1,'#070e1800');c.fillStyle=halo;c.fillRect(0,0,W,H);
+ // Passing stonework travels upward, making the heroine's downward motion clear.
+ for(var layer=0;layer<2;layer++){var brickH=66+layer*26,off=(t*(38+layer*25))%brickH,wall=36+layer*12;
+  for(var j=-1;j<H/brickH+1;j++){var y=j*brickH-off,wave=0;c.fillStyle=layer?'#18242ce8':'#28343a88';c.fillRect(-8,y,wall+wave,brickH-3);c.fillRect(W-wall-wave,y,wall+15,brickH-3);c.strokeStyle='#bb986b24';c.lineWidth=1;c.beginPath();c.moveTo(0,y+2);c.lineTo(wall+wave,y+2);c.moveTo(W-wall-wave,y+2);c.lineTo(W,y+2);c.stroke();
+   if((j+layer)%3===0){c.fillStyle='#b6bb9f12';c.fillRect(8,y+7,wall-20,2);c.fillRect(W-wall+8,y+7,wall-20,2);}
+  }
+ }
+ // Slender roots and gilded seams give the shaft a strong vertical silhouette.
+ for(var side=0;side<2;side++){c.save();if(side){c.translate(W,0);c.scale(-1,1);}c.strokeStyle='#8f7b5938';c.lineWidth=2;c.beginPath();c.moveTo(40,0);for(var y=0;y<H+60;y+=40)c.lineTo(40+Math.sin(y*.012)*9,y);c.stroke();c.strokeStyle='#90b7aa22';c.lineWidth=1;c.beginPath();c.moveTo(59,0);c.bezierCurveTo(75,H*.3,39,H*.7,66,H);c.stroke();c.restore();}
+ var span=H+220;
+ for(var i=0;i<12;i++){var yy=((i*137.7-t*(34+(i%3)*18))%span+span)%span-110;var xx=i%2?W-72-(i%3)*12:65+(i%3)*15;var size=12+(i%3)*5;c.save();c.translate(xx,yy);c.rotate(Math.sin(t*.32+i)*.25+(i%2?.18:-.18));c.globalAlpha=.25+(i%3)*.12;
+  if(i%3===0){c.fillStyle='#d8c6a0';c.fillRect(-size*.65,-size,size*1.3,size*2);c.strokeStyle='#906d50';c.lineWidth=1;c.strokeRect(-size*.48,-size*.82,size*.96,size*1.64);c.fillStyle='#a45e64';c.font=size+'px Georgia';c.textAlign='center';c.fillText(i%2?'♥':'♦',0,size*.3);}
+  else if(i%3===1){c.fillStyle='#867157';c.fillRect(-size,-size*.7,size*2,size*1.4);c.fillStyle='#d5c6a5';c.fillRect(-size+3,-size*.7+2,size*2-5,size*1.4-4);c.strokeStyle='#ab9271';c.lineWidth=2;c.beginPath();c.moveTo(0,-size*.7);c.lineTo(0,size*.7);c.stroke();}
+  else{c.strokeStyle='#d0ab70';c.lineWidth=2;c.beginPath();c.arc(0,0,size*.8,0,TAU);c.stroke();c.fillStyle='#d4b782';circle(c,0,-size,3);c.strokeStyle='#e7d9b5';c.lineWidth=1;c.beginPath();c.moveTo(0,0);c.lineTo(0,-size*.5);c.moveTo(0,0);c.lineTo(size*.4,size*.2);c.stroke();}
+ c.restore();}
+ for(var i=0;i<44;i++){var speed=18+(i%5)*13,yy=((i*71.37-t*speed)%H+H)%H,xx=32+((i*89.31)%(W-64));c.globalAlpha=.1+(i%4)*.09;c.fillStyle=i%3?'#c5d8d1':'#edc986';circle(c,xx+Math.sin(t*.3+i)*3,yy,i%7? .7:1.6);}c.globalAlpha=1;
+ var shade=c.createLinearGradient(0,0,0,H);shade.addColorStop(0,'#050b16b3');shade.addColorStop(.3,'#050b1600');shade.addColorStop(.6,'#050b1630');shade.addColorStop(1,'#050b16ed');c.fillStyle=shade;c.fillRect(0,0,W,H);
+}
+var beforeTitleFallRender=render;
+render=function(){if(state!=='title'){titleFallLast=0;beforeTitleFallRender();return;}var now=performance.now()/1000;if(titleFallLast&&!document.hidden&&!reducedMotion)titleFallClock+=Math.min(.05,now-titleFallLast);titleFallLast=now;var t=titleFallClock,c=ctx;c.save();c.setTransform(S*DPR,0,0,S*DPR,0,0);titleRabbitHole(c,t);
+ var portrait=$('title-portrait'),yy=portrait?(portrait.offsetTop+portrait.offsetHeight*.52)/S:H*.4;
+ // One registered airborne pose avoids the frame-to-frame redraw jitter of an idle/run cycle.
+ var x=W*.5+(reducedMotion?0:Math.sin(t*.65)*3),y=yy+(reducedMotion?0:Math.sin(t*.85)*3);var light=c.createRadialGradient(x,y,10,x,y,110);light.addColorStop(0,'#a5d9cf20');light.addColorStop(1,'#a5d9cf00');c.fillStyle=light;c.fillRect(x-120,y-120,240,240);
+ c.save();c.translate(x,y);c.rotate(.36+(reducedMotion?0:Math.sin(t*.58)*.045));
+ if(!measuredPose(c,'movement-a',0,2,0,0,106,'center',1,0,1)){drawHero(c,'alice',0,0,2.7,1,0,true,0,0,'');}c.restore();
+ // Fine streaks move past Alice; they never pass over the controls or text.
+ if(!reducedMotion){c.save();c.beginPath();c.rect(W*.23,yy-82,W*.54,164);c.clip();c.strokeStyle='#c7e8df1c';c.lineWidth=1;for(var i=0;i<8;i++){var xx=W*.24+i*W*.075,sy=yy+((i*31-t*120)%180+180)%180-90;c.beginPath();c.moveTo(xx,sy);c.lineTo(xx,sy-11-(i%3)*5);c.stroke();}c.restore();}
+ c.restore();};
 
 $('bmute').textContent=save.set.muted?'🔇':'🔊';
 resize();

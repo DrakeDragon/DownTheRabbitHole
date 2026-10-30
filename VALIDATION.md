@@ -2,7 +2,7 @@
 
 ## Packaging checks performed for this ZIP
 
-- Packaged `index.html` is byte-for-byte identical to the latest Movement Edition deliverable.
+- Packaged `index.html` is byte-for-byte identical to the latest Falling Title Edition deliverable.
 - Entry file is named `index.html` and resides at the archive root.
 - README, release notes, validation notes, `.nojekyll`, and checksums are present.
 - JavaScript is extracted from the packaged HTML and checked with `node --check`.
@@ -16,3 +16,10 @@ The movement pass reported 1,764 pose-and-draw checks across 36 heroes and seven
 ## Not yet certified
 
 A complete campaign run, every generated frame's artistic quality, long-duration performance on low-memory devices, and physical iPhone/Android compatibility require further playtesting. Packaging checks confirm release structure and source consistency; they do not certify AAA visual quality or eliminate all gameplay issues.
+
+## Falling title update checks
+
+- JavaScript syntax check passes for the updated entry file.
+- Browser inspection confirms the falling title scene and readable controls.
+- The title renderer delegates other states to the existing renderer.
+- Uses existing embedded assets and adds no network dependencies.

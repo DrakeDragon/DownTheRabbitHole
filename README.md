@@ -4,7 +4,7 @@
 
 Fall into a world where fairy tales share the same impossible rabbit hole. Flip gravity to run along the floor or ceiling, slip past flying clocks and enchanted hazards, collect shinies, and choose curios that change your next attempt. Every run builds toward new heroes, companions, upgrades, cosmetics, and more of the story.
 
-**Movement Edition — GitHub Pages release package**
+**Falling Title Edition — GitHub Pages release package**
 
 This is a complete, self-contained playable browser build. The game, styles, story, synthesized audio, and embedded sprite artwork are inside `index.html`. No installation, account, backend, API key, package manager, or build command is required to play or host it.
 
@@ -190,6 +190,11 @@ There are no real-money purchases or checkout flows in this build. All shop acti
 Daily and weekly activities are calculated locally from date-based rules. Matching seeds are not an online competition service: this release has no server-enforced timing or shared leaderboard. Browser date settings and local progression affect these activities.
 
 ## Artwork and animation
+
+### Falling title screen
+
+Alice descends through a vertical rabbit-hole shaft on the title screen. Stonework, books, playing cards, pocket watches, dust, and light streaks move upward at different speeds. A fixed airborne pose with gentle continuous drift and rotation replaces rapid title pose cycling, reducing jitter. The scene respects reduced motion and uses existing embedded artwork. Hero selection and the playable run retain their existing behavior.
+
 
 The Movement Edition uses embedded, AI-generated painted sprite artwork and a custom Canvas animation renderer. The interface uses midnight blue, antique gold, illustrated scenery, and readable panels.
 

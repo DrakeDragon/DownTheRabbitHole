@@ -1,6 +1,16 @@
+# Falling Title Edition — release notes
+
+## Title-screen update
+
+- Replaced the horizontal title backdrop with a vertical rabbit-hole shaft.
+- Added upward-moving stonework, books, cards, watches, dust, and light streaks.
+- Replaced rapidly changing title poses with one stable falling Alice pose and smooth drift/rotation.
+- Preserved hero selection, gameplay, and existing saves.
+- Reduced motion freezes the decorative falling scene.
+
 # Movement Edition — release notes
 
-This package contains the latest completed movement build from this project. Packaging does not change gameplay, balance, saves, or artwork.
+This package contains the latest completed movement build from this project. The title update changes presentation only; gameplay, balance, and save structure remain as before.
 
 ## Included
 
