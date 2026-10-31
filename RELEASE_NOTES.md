@@ -1,30 +1,27 @@
-# Foreground Clarity Edition — release notes
+# Branded Share Edition — release notes
 
-## Obstacle materials
+## Results makeover
 
-- Added 24 realm palettes for the existing solid-obstacle shapes.
-- Added clipped material treatments for wood, porcelain, paper, plants, coral, candy, metal, ice, and stone/ivory.
-- Added directional highlights and dark separation from scenery.
-- Retained existing obstacle widths, heights, world positions, and collision checks.
-- Gear presentation rotates smoothly using its cached material.
-- Restyled beam emitters, warning dashes, and active beams without changing their activation or damage rules.
-- Added a separation shadow to painted flying enemies.
+- Added a portrait run card with the game wordmark, hero, realm, score, stage reached, run statistics, best-result badges, and a play invitation.
+- Added native PNG sharing, Save Image, Copy Invite, and a public Play Link control.
+- Preserved shard/XP rewards, earned-item notes, chest access, hero access, and replay/menu controls.
+- Added share preparation, cancellation, and duplicate-action handling.
+- Fixed results-panel tapping/scrolling accidentally restarting a run.
+- Fixed Enter-key interaction with focused buttons/form controls and close-button aliases used by the new dialogs.
+- Suppressed reward notification overlays while the result page is visible; the result summary retains rewards.
 
-## Hero visibility
+## Branding for published links
 
-- Retained painted hero frames and animation states.
-- Added a fine dark silhouette edge and a soft warm directional rim during gameplay.
-- Added soft local shading behind the hero rather than dimming the full environment.
-- Reduced post-hit fading from 35% to 72% opacity; intentional ghost/phase transparency remains.
-- Retained boss artwork.
+- Added a 1200 × 630 website social-preview PNG.
+- Added page description, Open Graph, and social-card metadata.
+- Included a guide for public play links, native-sharing fallbacks, and absolute image URLs after deployment.
 
-## Retained
+## Tea Party visibility adjustment
 
-- 13,600-unit stages and existing pace.
-- Stopped completion pages, upgrade choices, and explicit Start Next Stage button.
-- 24 painted environments and falling title scene.
-- Existing progression, story, modes, rewards, and save key.
+- Strengthened the hero's ceiling-side rim while retaining the underlying painted artwork.
+- Added smooth local background shading near the ceiling, with extra strength in the Tea Party realm.
+- Kept stage length, obstacles/collision rules, character abilities, and the manual between-stage upgrade flow.
 
-## Performance and limits
+## Current limits
 
-Material images are cached with a 72-entry limit; the hero contrast layer uses reusable canvases. This is a procedural material and readability pass over existing obstacle shapes, not a replacement set of painted obstacle sprites. Physical-device performance and full-campaign balance still require playtesting.
+Native sharing, file downloads, caption handling, and clipboard permissions vary by browser and receiving app. Social metadata previews can be cached and may require absolute deployed image URLs. Physical iPhone/Android sharing behavior is not certified by the cloud-browser checks.

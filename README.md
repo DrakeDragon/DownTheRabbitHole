@@ -4,7 +4,7 @@
 
 Fall into a world where fairy tales share the same impossible rabbit hole. Flip gravity to run along the floor or ceiling, slip past flying clocks and enchanted hazards, collect shinies, and choose curios that change your next attempt. Every run builds toward new heroes, companions, upgrades, cosmetics, and more of the story.
 
-**Foreground Clarity Edition — GitHub Pages release package**
+**Branded Share Edition — GitHub Pages release package**
 
 This is a complete, self-contained playable browser build. The game, styles, story, synthesized audio, and embedded sprite artwork are inside `index.html`. No installation, account, backend, API key, package manager, or build command is required to play or host it.
 
@@ -57,7 +57,7 @@ Timing, positioning, and gravity are the core of the game. Attacks such as card 
 | Flip gravity during a run | Tap / click the playfield | Space, Up Arrow, or W |
 | Pause or resume | Pause button | P or Escape during play/pause |
 | Start from the title screen | Fall In | Enter |
-| Retry after the results delay | Again / playfield | Enter |
+| Retry after a run | Fall Again | Focus and activate Fall Again, or Enter with the page focused |
 | Start the next stage | Select an upgrade, then Start Next Stage | Focus and activate the start button |
 | Choose a curio, hero, or menu item | Tap / click the button | Tab to focus, then activate |
 | Close a dialog | Return / close button | Escape |
@@ -197,13 +197,27 @@ There are no real-money purchases or checkout flows in this build. All shop acti
 
 Daily and weekly activities are calculated locally from date-based rules. Matching seeds are not an online competition service: this release has no server-enforced timing or shared leaderboard. Browser date settings and local progression affect these activities.
 
+## Branded run cards and sharing
+
+The ending screen now centers a **1080 × 1350 portrait run card** rather than a plain score display. The card includes the Down the Rabbit Hole wordmark, realm artwork, the selected hero, score, stage reached, gravity flips, shinies, bosses, applicable best-result badges, and a "How far can you fall?" invitation. "Stage reached" describes the stage visited, not a claim that the last stage was completed. Shard and XP rewards remain visible below the main result actions.
+
+- **Share My Run:** shares the PNG and invitation through the browser's native share interface when file sharing is supported. Text sharing or copy-invite fallback is used where appropriate.
+- **Save Image:** exports the prepared PNG for posting manually. Some mobile browsers open the image rather than immediately downloading it.
+- **Copy Invite:** copies a branded challenge message and public play link. If clipboard access is unavailable, a selectable text dialog is provided.
+- **Play Link:** uses the current public game URL automatically, or lets the player set a public address when playing a downloaded/local copy. Local development addresses are not included in invitations. URL query strings and fragments are omitted.
+- **Fall Again:** explicitly starts another run. Tapping or scrolling the result panel no longer automatically restarts the game.
+
+The package also includes `assets/social-preview.png`, a **1200 × 630** branded website preview, and social metadata in the HTML. Upload the assets folder with the release. For the most reliable link previews, replace the metadata's relative image addresses with the deployed absolute URL as explained in [SHARING_GUIDE.md](SHARING_GUIDE.md). Social platforms cache previews and do not all interpret metadata or native image captions identically.
+
+PNG generation happens locally in the browser. The game does not upload the card to a server. A player chooses whether and where to share it using their own browser/device controls. Native sharing availability, target apps, and clipboard permissions depend on browser and device support; this release does not guarantee identical behavior on every phone.
+
 ## Artwork and animation
 
 ### Obstacles and foreground clarity
 
 The existing obstacle silhouettes now use material and color treatments selected for each realm: wood grain, porcelain, paper, foliage, metal, ivory/stone, candy, coral, and ice. Directional highlights and dark separation edges help active obstacles read against the painted scenery. Beam emitters and warnings use coordinated colors with a bright active core. Flying enemies have a subtle separation shadow.
 
-The hero receives a fine dark silhouette edge, a warm directional rim, and soft local background shading. The underlying painted character frames and movement poses are retained. Brief post-hit blinking now fades to 72% opacity rather than 35%, helping the player keep track of the hero; intentional ghost/phase transparency remains. Boss artwork is retained.
+The hero receives a fine dark silhouette edge, a warm directional rim, and soft local background shading. The ceiling route now gets a stronger rim and additional local shading as the hero approaches it, with extra strength in the Tea Party realm. The underlying painted character frames and movement poses are retained. Brief post-hit blinking now fades to 72% opacity rather than 35%, helping the player keep track of the hero; intentional ghost/phase transparency remains. Boss artwork is retained.
 
 This pass changes presentation, not obstacle sizes, collision rules, stage length, or the stopped upgrade/next-stage flow. Cached obstacle materials are bounded to 72 entries to limit memory growth.
 
@@ -297,8 +311,10 @@ Progress is stored in browser `localStorage`, using the game's existing `drh_sav
 | `RELEASE_NOTES.md` | Scope and current limits of this release |
 | `VALIDATION.md` | Packaging checks and prior implementation checks |
 | `SHA256SUMS.txt` | Checksums for the packaged files |
+| `SHARING_GUIDE.md` | Share controls, public play links, and social-preview setup |
+| `assets/social-preview.png` | Branded website-link preview image, 1200 × 630 |
 
-The HTML contains the game's data tables, gameplay engine, audio synthesis, rendering, menus, save logic, sprite manifests, and movement refinements. Embedded artwork uses data URLs. No separate source download or asset folder is required to reproduce this exact playable build. The package does not include the earlier authoring scripts or raw full-resolution PNG masters.
+The HTML contains the game's data tables, gameplay engine, audio synthesis, rendering, menus, save logic, sprite manifests, and movement refinements. Embedded artwork uses data URLs. No separate source download or asset folder is required to run the game itself. The included assets folder supplies the website social-preview image and should be uploaded with the full release. The package does not include the earlier authoring scripts or raw full-resolution PNG masters.
 
 No software license is selected by this package. Decide your repository's licensing and attribution terms before representing it as open source. The game uses original interpretations of familiar literary and fairy-tale figures; this README does not provide a jurisdiction-specific rights clearance.
 

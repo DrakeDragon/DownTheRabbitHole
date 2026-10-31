@@ -1,20 +1,20 @@
-# Validation — Foreground Clarity Edition
+# Validation — Branded Share Edition
 
-## Checks performed for this update
+## Performed in this update
 
 - JavaScript syntax check passes for the packaged HTML.
-- Automated render checks cover 864 combinations: 24 realm palettes, 18 obstacle kinds, and both floor/ceiling surfaces.
-- Render coordinates are finite, original obstacle properties are not mutated, the drawing context is restored, and the material cache stays bounded.
-- Beam rendering is exercised across 24 palettes.
-- Source comparisons confirm existing collision, stage-play, and completion-flow functions are retained; stage distance remains 13,600 units.
-- Browser inspections cover the ocean/coral and Tea Party/porcelain scenes, hero silhouette treatment, and flying-enemy contrast. No page rendering errors were observed in those checks.
-- ZIP integrity, packaged-source byte equality, and file checksums pass.
-- Local QA pages and test-only controls are excluded from the ZIP.
+- Automated share-flow checks cover public URL sanitization, branded caption content, native PNG payloads, native text fallback, clipboard fallback, cancellation without fallback side effects, image-ready guarding, duplicate-share guarding, and dialog close routing.
+- Canvas export renders a 1080 × 1350 run-card layout and a 1200 × 630 website preview using the existing realm/hero assets. The layout test contains synthetic values and is not included in the release.
+- Browser inspection covers the phone-width ending screen, live result-card artwork, safe results scrolling, keyboard play-link dialog access, dialog cancellation, and explicit replay.
+- Browser inspection covers the additional Tea Party ceiling-route contrast.
+- No page rendering errors were observed during those checks.
+- The packaged HTML matches Share Edition source; the preview PNG is present; ZIP integrity and SHA-256 checks pass.
+- QA controls, synthetic result data, and test-only pages are excluded.
 
-## Prior checks retained as historical results
+## Limits
 
-The previous release checked 36 curios / 79 level descriptions, manual stage continuation and duplicate-action guards, 96 environment cases across 24 realms, and phone-width completion layout. The earlier movement implementation reported 1,764 pose-and-draw cases. These are historical checks, not rerun claims for this presentation-only pass.
+Native share destinations were mocked for automated tests; the agent did not publish a post or send a message. Real-device share sheets, receiving-app caption handling, and preview cache refresh require platform testing. Cloud-browser checks do not certify every iPhone/Android combination or a complete campaign playthrough.
 
-## Remaining validation
+## Prior validation
 
-These checks are not a complete campaign playthrough or physical iPhone/Android certification. Long-duration mobile performance and artistic review of all generated frames remain playtesting work.
+Earlier releases checked 864 obstacle-material cases, 36 curios / 79 level descriptions, stage-stop flow, 96 environment crop cases, and 1,764 movement pose/draw cases. These are historical results, not rerun claims for this update.
