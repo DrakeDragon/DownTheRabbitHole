@@ -4,7 +4,7 @@
 
 Fall into a world where fairy tales share the same impossible rabbit hole. Flip gravity to run along the floor or ceiling, slip past flying clocks and enchanted hazards, collect shinies, and choose curios that change your next attempt. Every run builds toward new heroes, companions, upgrades, cosmetics, and more of the story.
 
-**Branded Share Edition — GitHub Pages release package**
+**Adventure Edition — GitHub Pages release package**
 
 This is a complete, self-contained playable browser build. The game, styles, story, synthesized audio, and embedded sprite artwork are inside `index.html`. No installation, account, backend, API key, package manager, or build command is required to play or host it.
 
@@ -17,6 +17,7 @@ This is a complete, self-contained playable browser build. The game, styles, sto
 - [Controls](#controls)
 - [Heroes and companions](#heroes-and-companions)
 - [Worlds and bosses](#worlds-and-bosses)
+- [Adventure expansion](#adventure-expansion)
 - [Progression and replay](#progression-and-replay)
 - [Modes and recurring activities](#modes-and-recurring-activities)
 - [Artwork and animation](#artwork-and-animation)
@@ -166,6 +167,21 @@ Stages now cover **13,600 distance units**, four times the previous 3,400. At no
 
 At completion, the game pauses on a dedicated page showing time, shinies earned, story, and upgrade choices. Upgrade descriptions show the effect at the next level rather than JavaScript function text. Select one card to apply it once, review your build, and press **Start Next Stage** when ready. Initial Head Start upgrades also wait for **Start First Stage** after the required picks. If no upgrades remain, the start button is available without a choice. Endless Descent now follows this explicit stop-and-start flow too. The final Gauntlet victory still ends its mode normally.
 
+## Adventure expansion
+
+The Adventure Hub connects the existing roster and twenty-four realms to new permanent goals and build choices. Open it from the title screen or the **Adventure** navigation button. Seasonal Events remain available through the title event banner and inside the hub.
+
+- **Realm Atlas:** inspect painted realm previews and earn five mastery stamps in each of the twenty-four realms: one clear, sixty collected shinies across clears, one clean clear, three clears, and five clears. That is **120 stamps**, each claimable once for two wonder essence and twenty-five shards. A shield, emergency blast, or revival being spent counts as a hit, so a protected collision does not qualify as clean.
+- **Forty permanent contracts:** eight goal families with five tiers each track runs, shinies, flips, cleared stages, bosses, hero ownership, close calls, and deepest stage. Existing lifetime totals count immediately; the new stage-clear total starts with this edition. Goals have no deadline and each tier has its own Claim button.
+- **Relic Forge:** craft twelve relics, improve each through three ranks, and equip any two. Spend wonder essence and shards to improve pickup range, shiny rewards, score, reaction time, collision size, gravity, dashes, shields, rerolls, emergency blasts, combo duration, or run shards. Crafting never auto-equips a relic. Equipped ranks are captured when a run starts.
+- **Four expeditions:** choose a three-, six-, twelve-, or twenty-four-stage journey with a proper victory screen. The Tea Trail ends after Stage 3, before the first boss. First clears give larger rewards; repeat clears remain worthwhile. Expeditions use the existing realm order, full stage lengths, and manual upgrade breaks.
+- **Run Records:** retain the latest thirty completed runs, including hero, mode, actual score, reached and cleared stages, shinies, bosses, duration, and victory status.
+- **Portable saves:** export a JSON backup, preview an import, and explicitly restore it. Backups include progression, collections, relics, mastery, contracts, and recent records. They do not include an active run or the optional public sharing URL override.
+
+Wonder essence is earned from cleared stages (one normally, three for a boss stage), contract claims, mastery claims, and expedition victories. Relics apply in Story, Endless, and Expeditions. Daily Tale, Boss Rush, and Weekly Gauntlet retain their existing rules and do not apply relic bonuses. This edition adds goals and systems to the existing worlds; it does not add a new set of realm paintings or character atlases.
+
+See [EXPANSION_GUIDE.md](EXPANSION_GUIDE.md) for costs, effects, exact expedition rewards, and save-transfer steps.
+
 ## Progression and replay
 
 - **Shinies and shards:** collect shinies during runs and earn persistent rewards for upgrades and unlocks.
@@ -277,7 +293,7 @@ GitHub's official instructions: [Configure a Pages publishing source](https://do
 
 ## Saves and privacy
 
-Progress is stored in browser `localStorage`, using the game's existing `drh_save_v2` key. This release does not add cloud accounts, save synchronization, save-slot management, or a save import/export interface.
+Progress is stored in browser `localStorage`, using the game's existing `drh_save_v2` key. Existing progress is preserved on the same browser origin. This edition adds manual JSON save export/import through Adventure → Save & Backups or More → Save & Backups. It does not add cloud accounts, automatic synchronization, multiple save slots, or active-run resume.
 
 - Keep the same browser profile and hosting origin when updating the game to retain access to existing progress.
 - Local files, localhost, GitHub Pages, and a custom domain can have separate storage contexts.
@@ -311,6 +327,8 @@ Progress is stored in browser `localStorage`, using the game's existing `drh_sav
 | `RELEASE_NOTES.md` | Scope and current limits of this release |
 | `VALIDATION.md` | Packaging checks and prior implementation checks |
 | `SHA256SUMS.txt` | Checksums for the packaged files |
+| `EXPANSION_GUIDE.md` | Mastery, contracts, relics, expeditions, and backup instructions |
+| `tests/verify-game.cjs` | Dependency-free Node checks for expansion rules and save validation |
 | `SHARING_GUIDE.md` | Share controls, public play links, and social-preview setup |
 | `assets/social-preview.png` | Branded website-link preview image, 1200 × 630 |
 
@@ -322,4 +340,4 @@ No software license is selected by this package. Decide your repository's licens
 
 The release package is checked for ZIP integrity, a root-level entry point, matching game bytes, embedded local artwork, and JavaScript syntax. The movement implementation previously passed 1,764 pose-and-draw checks, with browser spot checks of gameplay and gallery states. These are not a complete campaign playthrough, a visual approval of every frame, or physical-device certification.
 
-See [VALIDATION.md](VALIDATION.md) and [RELEASE_NOTES.md](RELEASE_NOTES.md) for the release's checks and remaining limits. Further polish should focus on real-phone playtesting, generated-frame cleanup, and richer boss/enemy action cycles.
+See [VALIDATION.md](VALIDATION.md) and [RELEASE_NOTES.md](RELEASE_NOTES.md) for the release's checks and remaining limits. The expansion also has fourteen automated checks and phone-width browser checks. Run `node tests/verify-game.cjs` from the extracted release folder to verify its core expansion rules. These tests use mocked browser APIs and do not certify physical-device sharing or a complete campaign playthrough.
