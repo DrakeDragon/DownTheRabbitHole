@@ -1,37 +1,29 @@
-# Falling Title Edition — release notes
+# Painted Realms & Longer Stages — release notes
 
-## Title-screen update
+## Upgrade display fix
 
-- Replaced the horizontal title backdrop with a vertical rabbit-hole shaft.
-- Added upward-moving stonework, books, cards, watches, dust, and light streaks.
-- Replaced rapidly changing title poses with one stable falling Alice pose and smooth drift/rotation.
-- Preserved hero selection, gameplay, and existing saves.
-- Reduced motion freezes the decorative falling scene.
+Curio description functions are now evaluated at the appropriate upgrade level. Cards display readable effect text. The same function-to-text issue is also corrected in curio info dialogs. All 36 curios and their 79 available level descriptions were checked.
 
-# Movement Edition — release notes
+## Longer stages
 
-This package contains the latest completed movement build from this project. The title update changes presentation only; gameplay, balance, and save structure remain as before.
+Stage distance increased from 3,400 to 13,600 units. The first stage is roughly a minute at starting speed; later stages and modified runs vary. Enemy speed, character artwork, boss artwork, collision sizes, and hero abilities are retained.
 
-## Included
+## Explicit stage starts
 
-- Self-contained HTML source with embedded artwork and audio synthesis.
-- 36 heroes, 22 boss definitions, 24 realm definitions, six companions, 12 painted animated enemy types, and code-rendered hazards/projectiles.
-- Expanded hero takeoff, flight, landing, and recovery poses.
-- Measured sprite anchors, transition blending, and cached frame isolation.
-- Movement selection and pause controls in the animated collection.
-- Phone-oriented menus, narrow-screen navigation, and dialog focus handling.
-- Existing story, progression, rewards, events, modes, and device-local saves.
+Completing a stage opens a stopped completion page with summary, story, and upgrade cards. Choosing a card applies it once and highlights it. The player must press Start Next Stage to resume. Multiple Head Start picks stay on the preparation screen and end with Start First Stage. Exhausted upgrade pools still permit continuing. Endless now pauses for manual choices and stage starts; final Gauntlet victory still ends normally.
 
-## Remaining limits
+## Painted environments
 
-- Bosses and enemies retain short existing painted cycles; not every state has a new long animation.
-- Some generated frames and costume consistency still warrant visual cleanup.
-- Realm backgrounds share a common illustrated scenery treatment.
-- Some hero states reuse poses with procedural motion.
-- No cloud save, online leaderboard, service worker, or installed offline/PWA support.
-- Full campaign completion and physical iPhone/Android certification have not been performed.
-- The embedded artwork increases initial download and decode cost.
+24 different painted realm backdrops replace the shared scenery treatment. Added atmosphere, subtle depth movement, particles, foreground materials, and restrained action-area shading. Existing character and boss renderers remain in place. A bounded cache retains up to two decoded world atlases, with upcoming scenes preloaded during upgrade stops.
 
-## Updating an existing repository
+## Included from previous builds
 
-Replace its existing game entry point with this package's `index.html`, retaining the same hosting origin if you want the browser to keep using its existing save. Commit `.nojekyll` and the documentation alongside it. Follow the README for Pages configuration. No source rebuild is required.
+The falling title, full hero roster, boss roster, companions, movement animation states, animated gallery, narrative, events, quests, rewards, and browser-local save key remain included.
+
+## Current limits
+
+- Longer runs change pacing and reward timing; broad balance and real-phone performance still need playtesting.
+- Painted scenery is a backdrop, not new explorable geometry or collision platforms.
+- Bosses/enemies retain their existing short painted animation cycles.
+- Some generated sprite poses still warrant visual cleanup.
+- No cloud save, online leaderboard, service worker, or installable offline/PWA guarantee.

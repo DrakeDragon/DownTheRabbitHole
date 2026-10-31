@@ -1,25 +1,20 @@
-# Release validation
+# Validation — Painted Realms & Longer Stages
 
-## Packaging checks performed for this ZIP
+## Checks performed in this update
 
-- Packaged `index.html` is byte-for-byte identical to the latest Falling Title Edition deliverable.
-- Entry file is named `index.html` and resides at the archive root.
-- README, release notes, validation notes, `.nojekyll`, and checksums are present.
-- JavaScript is extracted from the packaged HTML and checked with `node --check`.
-- Sprite data URLs are embedded in the HTML; no external script or stylesheet dependencies are required.
-- ZIP CRC/integrity check passes; extracted file bytes match their SHA-256 entries.
+- JavaScript syntax check on the packaged HTML passes.
+- 36 curios / 79 upgrade-level descriptions produce nonempty readable text without function source.
+- Automated flow tests cover stage selection remaining stopped, explicit continuation, duplicate selection and duplicate continuation guards, two initial Head Start picks, exhausted upgrade pools, and Endless stage stops.
+- 96 environment drawing cases cover 24 realms at four distances; source crop rectangles remain valid and decoded world cache remains bounded to two atlases.
+- Browser QA confirms readable upgrade cards, selection remaining on the completion page, and the next-stage button resuming play.
+- Browser inspection includes a phone-width completion layout and painted Rabbit Hole/Ocean presentation, with no page rendering errors observed in those checks.
+- Packaged index.html matches the new Realm Edition source byte-for-byte. ZIP integrity and SHA-256 file checks pass.
+- The archive excludes local QA pages and test-only controls.
 
-## Prior implementation validation
+## Prior validation
 
-The movement pass reported 1,764 pose-and-draw checks across 36 heroes and seven movement states, plus anchor validity and landing event checks. Browser checks covered title/gallery presentation and starting gameplay. Earlier checks included a narrow-layout preview. These are recorded as prior implementation checks, not rerun claims from packaging.
+The earlier movement pass reported 1,764 pose-and-draw checks across 36 heroes and seven states, plus anchor and landing checks. These are prior implementation results, not rerun claims from this update.
 
-## Not yet certified
+## Remaining testing
 
-A complete campaign run, every generated frame's artistic quality, long-duration performance on low-memory devices, and physical iPhone/Android compatibility require further playtesting. Packaging checks confirm release structure and source consistency; they do not certify AAA visual quality or eliminate all gameplay issues.
-
-## Falling title update checks
-
-- JavaScript syntax check passes for the updated entry file.
-- Browser inspection confirms the falling title scene and readable controls.
-- The title renderer delegates other states to the existing renderer.
-- Uses existing embedded assets and adds no network dependencies.
+These checks do not constitute a complete campaign playthrough, a visual approval of every frame, or physical iPhone/Android certification. Longer-stage balance and performance across devices require further playtesting.

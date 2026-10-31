@@ -4,7 +4,7 @@
 
 Fall into a world where fairy tales share the same impossible rabbit hole. Flip gravity to run along the floor or ceiling, slip past flying clocks and enchanted hazards, collect shinies, and choose curios that change your next attempt. Every run builds toward new heroes, companions, upgrades, cosmetics, and more of the story.
 
-**Falling Title Edition — GitHub Pages release package**
+**Painted Realms & Longer Stages — GitHub Pages release package**
 
 This is a complete, self-contained playable browser build. The game, styles, story, synthesized audio, and embedded sprite artwork are inside `index.html`. No installation, account, backend, API key, package manager, or build command is required to play or host it.
 
@@ -43,9 +43,10 @@ Story fragments also belong to individual realms. Revisit places to reveal more 
 3. Your hero moves forward automatically. Tap to reverse gravity between the floor and ceiling.
 4. Avoid solid hazards, flying enemies, and beams while collecting shinies.
 5. Use limited airborne flips and any abilities supplied by your hero, companion, or current curios.
-6. Clear chapters and choose curios to shape the run. Defensive items, projectiles, magnets, score bonuses, and special effects can change your approach.
-7. Face boss-themed obstacle patterns, build close-call combos, and push farther into the tale.
-8. After a run, spend earned shards, improve your roster, claim available rewards, and try another combination.
+6. Complete a stage and stop on its completion page. Read its story and summary, then choose a curio. Defensive items, projectiles, magnets, score bonuses, and special effects can change your approach.
+7. Your selection is applied once and highlighted. The game stays stopped until you press **Start Next Stage**; selecting an upgrade alone never resumes the run.
+8. Face boss-themed obstacle patterns, build close-call combos, and push farther into the tale.
+9. After a run, spend earned shards, improve your roster, claim available rewards, and try another combination.
 
 Timing, positioning, and gravity are the core of the game. Attacks such as card volleys are triggered by abilities and flips rather than a separate manual combat button. Boss encounters are runner challenges with boss-specific hazard patterns, rather than conventional arena fights with a dedicated melee combat system.
 
@@ -57,6 +58,7 @@ Timing, positioning, and gravity are the core of the game. Attacks such as card 
 | Pause or resume | Pause button | P or Escape during play/pause |
 | Start from the title screen | Fall In | Enter |
 | Retry after the results delay | Again / playfield | Enter |
+| Start the next stage | Select an upgrade, then Start Next Stage | Focus and activate the start button |
 | Choose a curio, hero, or menu item | Tap / click the button | Tab to focus, then activate |
 | Close a dialog | Return / close button | Escape |
 | Inspect an animation | Open the animated collection; choose a movement | Use focused preview controls |
@@ -125,7 +127,7 @@ Companions accompany the hero with animated artwork. The roster also includes un
 
 ### 24 realm definitions
 
-The game cycles through a broad collection of fairy-tale and literary settings. These definitions supply names, hazards, music associations, and story/codex entries. The current illustrated scenery renderer shares a stylized visual treatment across realms; this list does not mean every realm already has a separately painted background.
+The game cycles through a broad collection of fairy-tale and literary settings. These definitions supply names, hazards, music associations, and story/codex entries. Each of these 24 realms now has its own painted backdrop, with atmospheric shading, subtle depth movement, particles, and foreground details. Background art sits behind the existing gameplay actors and hazards.
 
 1. The Rabbit Hole
 2. The Tea Party Table
@@ -158,6 +160,12 @@ The Queen of Hearts, The Beanstalk Giant, The Sorcerer of the Cave, The Jabberwo
 
 In the normal run structure, boss encounters occur every fourth chapter. Their weighted obstacle patterns alter what the runner must survive. Boss Rush and the Gauntlet change the encounter sequence. Boss artwork includes preparation, casting/attack, and recovery poses.
 
+## Longer stages and upgrade stops
+
+Stages now cover **13,600 distance units**, four times the previous 3,400. At normal starting speed, the opening stage takes approximately **55–57 seconds** rather than about 14 seconds. Later stages are faster, and hero abilities, mutators, slowing effects, and dashes change actual duration. Longer stages also require longer survival before the next upgrade; this is a pacing change, not a fixed timer.
+
+At completion, the game pauses on a dedicated page showing time, shinies earned, story, and upgrade choices. Upgrade descriptions show the effect at the next level rather than JavaScript function text. Select one card to apply it once, review your build, and press **Start Next Stage** when ready. Initial Head Start upgrades also wait for **Start First Stage** after the required picks. If no upgrades remain, the start button is available without a choice. Endless Descent now follows this explicit stop-and-start flow too. The final Gauntlet victory still ends its mode normally.
+
 ## Progression and replay
 
 - **Shinies and shards:** collect shinies during runs and earn persistent rewards for upgrades and unlocks.
@@ -179,7 +187,7 @@ There are no real-money purchases or checkout flows in this build. All shop acti
 | --- | --- | --- |
 | Standard run | Chapter progression with curio choices and recurring bosses | Available from the title |
 | Daily Tale | A date-seeded challenge with mutators | Reach Chapter 3 for its daily prize |
-| Endless Descent | Automatic curio choices and continuing speed progression | Unlock by reaching Chapter 5 |
+| Endless Descent | Continuing speed progression, with manual upgrades and stage starts | Unlock by reaching Chapter 5 |
 | Boss Rush | A boss challenge every chapter with increased rewards | Unlock after three boss victories |
 | Weekly Gauntlet | A seeded five-boss sequence and mutator | Unlock after three boss victories; milestone rewards at three and five |
 | Daily quests | Three rotating objectives and claimable rewards | Completing all three awards a Silver chest |
@@ -196,8 +204,9 @@ Daily and weekly activities are calculated locally from date-based rules. Matchi
 Alice descends through a vertical rabbit-hole shaft on the title screen. Stonework, books, playing cards, pocket watches, dust, and light streaks move upward at different speeds. A fixed airborne pose with gentle continuous drift and rotation replaces rapid title pose cycling, reducing jitter. The scene respects reduced motion and uses existing embedded artwork. Hero selection and the playable run retain their existing behavior.
 
 
-The Movement Edition uses embedded, AI-generated painted sprite artwork and a custom Canvas animation renderer. The interface uses midnight blue, antique gold, illustrated scenery, and readable panels.
+This edition uses embedded, AI-generated painted sprite artwork and a custom Canvas animation renderer. The interface uses midnight blue, antique gold, illustrated scenery, and readable panels.
 
+- Six embedded environment atlases provide 24 different painted realm backdrops. The renderer retains at most two decoded world atlases and preloads the next realm at an upgrade stop.
 - Artwork covers all 36 heroes, 22 bosses, 12 animated enemy types, and six companions. Arrows and solid environmental hazards retain code-rendered visuals.
 - New hero movement artwork supplies takeoff, airborne, falling, landing, and recovery poses.
 - Hero playback distinguishes idle, run, takeoff, airborne, landing, dash, and hit reaction states. Some states combine painted poses with procedural breathing, lean, or transitions.
