@@ -4,7 +4,7 @@
 
 Fall into a world where fairy tales share the same impossible rabbit hole. Flip gravity to run along the floor or ceiling, slip past flying clocks and enchanted hazards, collect shinies, and choose curios that change your next attempt. Every run builds toward new heroes, companions, upgrades, cosmetics, and more of the story.
 
-**Adventure Edition — GitHub Pages release package**
+**Encore Edition — Boss Encounters & Visual Polish**
 
 This is a complete, self-contained playable browser build. The game, styles, story, synthesized audio, and embedded sprite artwork are inside `index.html`. No installation, account, backend, API key, package manager, or build command is required to play or host it.
 
@@ -17,6 +17,7 @@ This is a complete, self-contained playable browser build. The game, styles, sto
 - [Controls](#controls)
 - [Heroes and companions](#heroes-and-companions)
 - [Worlds and bosses](#worlds-and-bosses)
+- [Encore improvements](#encore-improvements)
 - [Adventure expansion](#adventure-expansion)
 - [Progression and replay](#progression-and-replay)
 - [Modes and recurring activities](#modes-and-recurring-activities)
@@ -44,10 +45,11 @@ Story fragments also belong to individual realms. Revisit places to reveal more 
 3. Your hero moves forward automatically. Tap to reverse gravity between the floor and ceiling.
 4. Avoid solid hazards, flying enemies, and beams while collecting shinies.
 5. Use limited airborne flips and any abilities supplied by your hero, companion, or current curios.
-6. Complete a stage and stop on its completion page. Read its story and summary, then choose a curio. Defensive items, projectiles, magnets, score bonuses, and special effects can change your approach.
-7. Your selection is applied once and highlighted. The game stays stopped until you press **Start Next Stage**; selecting an upgrade alone never resumes the run.
-8. Face boss-themed obstacle patterns, build close-call combos, and push farther into the tale.
-9. After a run, spend earned shards, improve your roster, claim available rewards, and try another combination.
+6. In boss stages, switch between both routes. Collect gold counter stars to strike back, earn extra score, and shorten the fight slightly.
+7. Complete a stage and stop on its completion page. Read its story and summary, then choose a curio. Defensive items, projectiles, magnets, score bonuses, and special effects can change your approach.
+8. Your selection is applied once and highlighted. The game stays stopped until you press **Start Next Stage**; selecting an upgrade alone never resumes the run.
+9. Face boss-themed obstacle patterns, build close-call combos, and push farther into the tale.
+10. After a run, spend earned shards, improve your roster, claim available rewards, and try another combination.
 
 Timing, positioning, and gravity are the core of the game. Attacks such as card volleys are triggered by abilities and flips rather than a separate manual combat button. Boss encounters are runner challenges with boss-specific hazard patterns, rather than conventional arena fights with a dedicated melee combat system.
 
@@ -62,7 +64,6 @@ Timing, positioning, and gravity are the core of the game. Attacks such as card 
 | Start the next stage | Select an upgrade, then Start Next Stage | Focus and activate the start button |
 | Choose a curio, hero, or menu item | Tap / click the button | Tab to focus, then activate |
 | Close a dialog | Return / close button | Escape |
-| Inspect an animation | Open the animated collection; choose a movement | Use focused preview controls |
 
 The game supports limited midair flips; available charges depend on the build. Tapping does not grant unlimited airborne direction changes. Buttons and menus handle their own input so selecting them does not also trigger a playfield flip.
 
@@ -167,6 +168,20 @@ Stages now cover **13,600 distance units**, four times the previous 3,400. At no
 
 At completion, the game pauses on a dedicated page showing time, shinies earned, story, and upgrade choices. Upgrade descriptions show the effect at the next level rather than JavaScript function text. Select one card to apply it once, review your build, and press **Start Next Stage** when ready. Initial Head Start upgrades also wait for **Start First Stage** after the required picks. If no upgrades remain, the start button is available without a choice. Endless Descent now follows this explicit stop-and-start flow too. The final Gauntlet victory still ends its mode normally.
 
+## Encore improvements
+
+This release refines the moment-to-moment experience while retaining the Adventure expansion.
+
+- **Illustrated title:** a new painted rabbit-hole scene, luminous branding, stable falling Alice, drifting light, and a prominent Fall In button before optional roster adjustments. The animated collection button is removed.
+- **Illustrated Adventure Hub:** new guild-hall, relic-workshop, and expedition art in page headers and large feature cards. The existing realm paintings remain visible in the atlas. New menu imagery is embedded in the HTML for offline play.
+- **More active boss encounters:** all twenty-two bosses now pressure both the floor and ceiling with low, alternating threats, readable windups, generous gaps, and protected stage boundaries. Ordinary non-boss patterns are unchanged. Boss attacks emphasize route choices instead of faster global speed or an abrupt difficulty multiplier.
+- **Counter stars:** collect the distinct gold star in a safe route to return a visible strike to the boss. Each grants base score worth 35 points before run multipliers and removes 0.8% of the boss's stage distance; total counter damage is capped at 8%. Stars are optional. Every hero can counter without a new attack button.
+- **Richer boss playback:** the existing registered four-pose boss artwork blends through windup, attack and recovery, with secondary body movement, spell accents, delayed counter recoil, and boss-specific cadence. Pose bounds are fitted to the game width so animation does not lose large parts of the boss beyond the edge.
+- **Immediate results actions:** Share My Run and Fall Again are both large, persistent buttons outside the scrolling results. Sharing keeps its native-image, text, save-image and copy-invite options. Replaying takes one tap, including when the player has scrolled through rewards.
+- **A useful next goal:** results show an available contract reward or progress toward the next replay-related contract. There is no sharing requirement, new timer, or reward-expiry rule.
+
+See [ENCORE_GUIDE.md](ENCORE_GUIDE.md) for boss and replay details, and [ARTWORK.md](ARTWORK.md) for the new artwork assets and generation prompt.
+
 ## Adventure expansion
 
 The Adventure Hub connects the existing roster and twenty-four realms to new permanent goals and build choices. Open it from the title screen or the **Adventure** navigation button. Seasonal Events remain available through the title event banner and inside the hub.
@@ -253,13 +268,13 @@ This edition uses embedded, AI-generated painted sprite artwork and a custom Can
 - State transitions briefly blend poses, and cached frame isolation removes neighboring fragments from irregular movement sheets.
 - Boss preparation/cast/recovery selection responds to nearby encounter hazards.
 - Enemy and companion playback uses measured positioning with approach or hover timing.
-- The animated collection lets you inspect every hero, boss, and animated enemy, choose a movement, and pause playback without spending shards or changing unlocks.
+- The title-screen collection preview entry is removed in this release. Character selection and normal unlocks remain in Heroes.
 
 This is a developing illustrated game release. Bosses and enemies still use their existing short painted cycles; not every action has a separate long, hand-drawn animation. Some generated poses and their transitions may still need manual artistic cleanup.
 
 ## Menus and accessibility
 
-**Home** starts runs and opens the animated collection. **Heroes** manages the playable roster. **Pals** manages companions. **Shop** contains permanent upgrades and difficulty information. **Quests** contains modes and recurring rewards. **Events** shows the current token activity. **Book** contains awards, the codex, titles, story fragments, and The Book of Falling. **More** contains audio, vibration, statistics, and reset controls.
+**Home** starts runs and opens the Adventure Hub. **Heroes** manages the playable roster. **Pals** manages companions. **Shop** contains permanent upgrades and difficulty information. **Quests** contains modes and recurring rewards. **Adventure** opens mastery, contracts, relics, expeditions, and records. The current seasonal event remains accessible from the title event banner and the hub. **Book** contains awards, the codex, titles, story fragments, and The Book of Falling. **More** contains audio, vibration, statistics, and reset controls.
 
 The layout is portrait-oriented and constrained on wide screens. Navigation switches to two rows in narrow layouts. Dialogs have keyboard focus handling, labels, and Escape dismissal. The motion renderer responds to the operating system's reduced-motion preference; this reduces presentation animation but does not remove the moving hazards central to gameplay. Sound and music levels are adjustable. Haptics depend on browser/device support. Audio may require a user gesture before it starts.
 
@@ -315,7 +330,7 @@ Progress is stored in browser `localStorage`, using the game's existing `drh_sav
 | Sound is silent | Tap the page, check More audio settings, the mute control, and device/browser volume. |
 | Progress appears missing | Check the exact origin and browser profile. A different URL origin does not migrate a previous save. |
 | Browser storage is unavailable | Allow site storage and avoid restrictive/private modes when you want persistence. |
-| An animation looks clipped or rough | Record the hero/enemy, movement state, and device/browser; use the gallery to reproduce it. |
+| An animation looks clipped or rough | Record the hero/enemy, movement state, and device/browser; note the attack or movement and whether it happened near a screen edge. |
 
 ## Release contents and development
 
@@ -327,6 +342,9 @@ Progress is stored in browser `localStorage`, using the game's existing `drh_sav
 | `RELEASE_NOTES.md` | Scope and current limits of this release |
 | `VALIDATION.md` | Packaging checks and prior implementation checks |
 | `SHA256SUMS.txt` | Checksums for the packaged files |
+| `ENCORE_GUIDE.md` | New boss attacks, counter stars, results actions, and replay flow |
+| `ARTWORK.md` | New illustrated assets, generation method, and prompt |
+| `assets/menu-*.webp` | New title and Adventure artwork, also embedded in the HTML |
 | `EXPANSION_GUIDE.md` | Mastery, contracts, relics, expeditions, and backup instructions |
 | `tests/verify-game.cjs` | Dependency-free Node checks for expansion rules and save validation |
 | `SHARING_GUIDE.md` | Share controls, public play links, and social-preview setup |
@@ -340,4 +358,4 @@ No software license is selected by this package. Decide your repository's licens
 
 The release package is checked for ZIP integrity, a root-level entry point, matching game bytes, embedded local artwork, and JavaScript syntax. The movement implementation previously passed 1,764 pose-and-draw checks, with browser spot checks of gameplay and gallery states. These are not a complete campaign playthrough, a visual approval of every frame, or physical-device certification.
 
-See [VALIDATION.md](VALIDATION.md) and [RELEASE_NOTES.md](RELEASE_NOTES.md) for the release's checks and remaining limits. The expansion also has fourteen automated checks and phone-width browser checks. Run `node tests/verify-game.cjs` from the extracted release folder to verify its core expansion rules. These tests use mocked browser APIs and do not certify physical-device sharing or a complete campaign playthrough.
+See [VALIDATION.md](VALIDATION.md) and [RELEASE_NOTES.md](RELEASE_NOTES.md) for the release's checks and remaining limits. The current release has twenty-one automated checks and phone-width browser checks. Run `node tests/verify-game.cjs` from the extracted release folder to verify its core expansion rules. These tests use mocked browser APIs and do not certify physical-device sharing or a complete campaign playthrough.

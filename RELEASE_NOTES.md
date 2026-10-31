@@ -1,16 +1,14 @@
-# Adventure Edition
+# Encore Edition — Boss Encounters & Visual Polish
 
-A substantial progression and replay expansion built on the Branded Share Edition.
+- Removed Explore the animated collection from the title screen.
+- New illustrated rabbit-hole title scene, brighter branding and earlier Fall In placement.
+- New guild, workshop and expedition art throughout the Adventure Hub.
+- Revised all twenty-two boss encounters to pressure floor and ceiling with readable low threats and generous spacing.
+- Added optional gold counter stars, returning-strike visuals, bonus score and boss damage capped at eight percent of the stage.
+- Improved boss pose transitions, breathing and secondary movement, casting effects, delayed recoil, and screen fitting.
+- Kept narrator bubbles clear of boss attack cues.
+- Moved Share My Run and Fall Again into a persistent, large-button action bar outside the scrolling result screen.
+- Added a results note showing an available contract reward or the next replay-related goal.
+- Retained Adventure progression, long ordinary stages, manual upgrade breaks, heroes, existing paintings and save compatibility.
 
-- Adventure Hub with six pages: Overview, Realm Atlas, Contracts, Relic Forge, Expeditions, and Run Records.
-- Five permanent mastery stamps in each existing realm: 120 stamps total.
-- Forty one-time contract tiers across eight goal families.
-- Wonder essence earned through stage clears and goals.
-- Twelve craftable relics, three ranks each, two equipped slots, with effects captured at run start.
-- Four finite expeditions spanning 3, 6, 12, and 24 stages, first-clear and repeat rewards, victory presentation, and branded victory sharing.
-- Thirty recent completed-run records.
-- Versioned save export/import with validation and restore preview.
-- Consistent four-column, two-row navigation across phone widths up to 480 pixels.
-- Existing heroes, animated art, painted realms, ceiling contrast, long stages, manual upgrade breaks, and sharing controls retained.
-
-Older saves retain their existing progression. New per-realm mastery, stage-clear totals, expedition wins, and run records begin in this edition. Contracts use the lifetime totals that older saves already contain. Relics do not apply to Daily Tale, Boss Rush, or Weekly Gauntlet. No active-run resume, cloud save service, online leaderboard, new character paintings, or physical-device certification is added.
+All twenty-one automated checks pass. Browser checks cover the new title and hub artwork, the result bar on a 320 × 568 app fixture, result scrolling and immediate replay, and a live corrected boss renderer. They do not certify physical-device native sharing, every animation frame, or full-campaign difficulty balance.

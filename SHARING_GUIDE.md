@@ -48,3 +48,7 @@ The native share payload includes the branded caption and public play link with 
 ## Privacy and limitations
 
 Cards are rendered locally using embedded game art. No card-upload backend is added. The player explicitly chooses the share destination. Scores remain local and are not server-verified. A share dialog completing does not prove a post was published. Native sharing and clipboard permissions vary by device/browser; test on your intended devices before a public launch.
+
+## Encore action bar
+
+Share My Run and Fall Again now remain fixed at the bottom of the ending screen while the poster and rewards scroll. The existing share, save-image, copy-invite and public-link behavior is unchanged.
