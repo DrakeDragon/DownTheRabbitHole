@@ -4,7 +4,7 @@
 
 Fall into a world where fairy tales share the same impossible rabbit hole. Flip gravity to run along the floor or ceiling, slip past flying clocks and enchanted hazards, collect shinies, and choose curios that change your next attempt. Every run builds toward new heroes, companions, upgrades, cosmetics, and more of the story.
 
-**Painted Realms & Longer Stages — GitHub Pages release package**
+**Foreground Clarity Edition — GitHub Pages release package**
 
 This is a complete, self-contained playable browser build. The game, styles, story, synthesized audio, and embedded sprite artwork are inside `index.html`. No installation, account, backend, API key, package manager, or build command is required to play or host it.
 
@@ -198,6 +198,14 @@ There are no real-money purchases or checkout flows in this build. All shop acti
 Daily and weekly activities are calculated locally from date-based rules. Matching seeds are not an online competition service: this release has no server-enforced timing or shared leaderboard. Browser date settings and local progression affect these activities.
 
 ## Artwork and animation
+
+### Obstacles and foreground clarity
+
+The existing obstacle silhouettes now use material and color treatments selected for each realm: wood grain, porcelain, paper, foliage, metal, ivory/stone, candy, coral, and ice. Directional highlights and dark separation edges help active obstacles read against the painted scenery. Beam emitters and warnings use coordinated colors with a bright active core. Flying enemies have a subtle separation shadow.
+
+The hero receives a fine dark silhouette edge, a warm directional rim, and soft local background shading. The underlying painted character frames and movement poses are retained. Brief post-hit blinking now fades to 72% opacity rather than 35%, helping the player keep track of the hero; intentional ghost/phase transparency remains. Boss artwork is retained.
+
+This pass changes presentation, not obstacle sizes, collision rules, stage length, or the stopped upgrade/next-stage flow. Cached obstacle materials are bounded to 72 entries to limit memory growth.
 
 ### Falling title screen
 
